@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(fileUpload({useTempFiles:true}));
 app.use(cors({
-    origin:['http://localhost:3000','http://localhost:3001'],
+    origin:['http://localhost:3000','http://localhost:3002'],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
 }))
