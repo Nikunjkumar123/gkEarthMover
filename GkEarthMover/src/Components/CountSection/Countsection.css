@@ -1,0 +1,180 @@
+/* Background image container */
+.countbgimg {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  text-align: center;
+  color: white;
+  background: url(../../Assets/HomeTruck.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay */
+.overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-blue);
+  z-index: 1;
+}
+
+/* Count data container with grid layout */
+.countdata {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  z-index: 2;
+}
+
+/* Count icon styles */
+.counticon {
+  text-align: center;
+
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  color: var(--dark-blue);
+  background: var(--dark-yellow);
+  border-radius: 50%;
+  border-top-right-radius: 0;
+}
+
+.counticondown {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  color: var(--dark-blue);
+  background: var(--dark-yellow);
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+}
+
+/* Inner icon styles */
+.countinnericon {
+  font-size: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+/* Title styles */
+.Equipmentdata .icondata h3 {
+  color: var(--dark-yellow);
+}
+
+/* Responsive Styling */
+@media (max-width: 1200px) {
+  .countbgimg {
+    height: 50vh;
+  }
+
+  .countdata {
+    display: flex;
+    flex-direction: row;
+
+    gap: 1rem;
+  }
+
+  .counticon,
+  .counticondown {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+  }
+
+  .countinnericon {
+    font-size: 1.7rem;
+  }
+
+  .Equipmentdata .icondata h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .countbgimg {
+    height: 40vh;
+  }
+
+  .countdata {
+    grid-template-columns: 1fr; /* Stack items in one column */
+    gap: 2rem;
+  }
+
+  .counticon,
+  .counticondown {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+  }
+
+  .countinnericon {
+    font-size: 2rem;
+  }
+
+  .icondata h1 {
+    font-size: 0.75rem;
+  }
+
+  .Equipmentdata .icondata h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .countbgimg {
+    height: 40vh;
+  }
+
+  .countdata {
+    flex-direction: row; /* Stack items vertically */
+    justify-content: center;
+  }
+
+  .countinnericon {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .icondata h1 {
+    font-size: 0.75rem;
+  }
+
+  .Equipmentdata .icondata h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .countbgimg {
+    height: 25vh;
+  }
+  .counticon,
+  .counticondown {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .countinnericon {
+    font-size: 1.2rem;
+    margin-top: 0;
+  }
+
+  .icondata h1 {
+    font-size: 1rem;
+  }
+
+  .Equipmentdata .icondata h3 {
+    font-size: 0.75rem;
+  }
+}

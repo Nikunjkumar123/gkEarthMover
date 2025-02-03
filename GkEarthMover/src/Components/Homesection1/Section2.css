@@ -1,0 +1,151 @@
+/* Section 2 image */
+.section2img img {
+  width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Section 2 info */
+.section2info {
+  padding: 3rem;
+}
+
+/* Section title */
+.section2title h4 {
+  color: var(--dark-yellow);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.section2title h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.section2title h1 span {
+  color: var(--dark-yellow);
+}
+
+.section2title p {
+  color: black;
+}
+
+/* List styling */
+.section2list li {
+  list-style: none;
+}
+
+/* List data */
+.listdata {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* List icon */
+.listicon {
+  background-color: var(--dark-yellow);
+  border-radius: 50%;
+  width: 80px;
+  height: 60px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.icon {
+  color: var(--dark-blue);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.listicon:hover {
+  background-color: var(--dark-blue);
+  transform: scale(1.1);
+}
+
+.listicon:hover .icon {
+  color: var(--dark-yellow);
+}
+
+.listdes h4 {
+  color: black;
+  font-weight: 700;
+}
+
+.listdes p {
+  color: var(--text-color);
+}
+
+/* Responsive Styling */
+@media (max-width: 992px) {
+  .section2img img {
+    width: 100%;
+  }
+
+  .section2info {
+    padding: 2rem;
+  }
+
+  .section2title h1 {
+    font-size: 2rem; /* Reduce font size on medium screens */
+  }
+
+  .section2title p {
+    font-size: 1.125rem; /* Smaller text for better readability */
+  }
+
+  .listdata {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    gap: 15px;
+  }
+
+  .listicon {
+    width: 60px; /* Reduce icon size */
+    height: 50px; /* Adjust for better fit */
+  }
+
+  .icon {
+    font-size: 1.2rem; /* Adjust icon size for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .section2title h1 {
+    font-size: 1.8rem; /* Further reduce font size */
+  }
+
+  .section2list {
+    padding-top: 1.5rem; /* Add some spacing between sections */
+  }
+
+  .listdata {
+    gap: 20px; /* Add more space between stacked list items */
+  }
+}
+
+@media (max-width: 576px) {
+  .section2title h1 {
+    font-size: 1.5rem; /* Smaller text on very small screens */
+  }
+
+  .section2info {
+    padding: 1rem; /* Reduce padding */
+  }
+
+  .listdata {
+  padding: 0 !important;
+  }
+
+  .listicon {
+    width: 50px;
+    height: 45px;
+   
+  }
+
+  .icon {
+    font-size: 1rem; /* Smaller icon size for extra-small screens */
+  }
+}

@@ -1,0 +1,41 @@
+.logo-slider {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #f8f9fa; 
+  padding: 1.5rem 0rem;
+
+}
+
+.slider-track {
+  display: flex;
+  animation: scroll 10s linear infinite;
+  width: calc(250px * 8); /* Adjust width based on number of logos */
+}
+
+
+.slide {
+  min-width: 250px; /* Adjust based on desired logo size */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+

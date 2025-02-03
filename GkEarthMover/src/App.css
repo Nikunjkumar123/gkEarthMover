@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Playfair Display", serif;
+}
+
+:root {
+  --dark-blue: #0c1239;
+  --dark-yellow: #fba31c;
+  --text-color: #727272;
+  --overlay-blue: #081775cc;
+  --card-bg: #fafafa;
+  --bg-gray: #e7e7ed;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  text-align: center;
+  color: white;
+  background: url(../src/Assets/bgimg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.726); /* Light black overlay */
+  z-index: 1;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2; /* Ensure the heading appears above the overlay */
+}
+
+.projectImage img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: white;
+  
+}
+
+/* .modal-dialog {
+  position: 'absolute';
+  top: '50%';
+  left: '50%';
+  transform: 'translate(-50%, -50%)'; 
+  max-width: '90%';
+  max-height: '90%';
+} */
+
+.modal-content .modal-body .modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-content .close {
+  background: var(--dark-blue);
+  color: #fafafa;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+@media (max-width: 1024px) {
+  .hero {
+    height: 35vh; /* Slightly smaller height on tablets */
+    background-position: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 30vh; /* Adjust height for smaller screens */
+    background-position: center;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem; /* Adjust font size for tablets */
+  }
+
+  .projectImage img {
+    height: 100px;
+   margin-bottom: 10px;
+   padding: 0;
+    
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 20vh; /* Further reduce height for mobile screens */
+    background-size: auto 100%; /* Make sure the image fills vertically without cropping */
+    background-position: center;
+  }
+
+  .hero h1 {
+    font-size: 1.4rem; /* Adjust font size for mobile */
+  }
+}

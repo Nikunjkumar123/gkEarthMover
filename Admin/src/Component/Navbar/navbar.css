@@ -1,0 +1,32 @@
+.topbar {
+    height: 60px;
+    background-color: #0c1239;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+    padding-right: 30px;
+    position: fixed;
+    top: 0;
+    justify-content: space-between;
+    left: 200px;
+    color: white;
+    right: 0;
+    z-index: 1000;
+    justify-content: center;
+  }
+  
+  .topbarIcon1{
+    background-color: var(--light-pink);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .topbarIcon2{
+    background-color: var(--pink);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }

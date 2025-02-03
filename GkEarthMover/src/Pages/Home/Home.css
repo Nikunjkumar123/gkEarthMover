@@ -1,0 +1,354 @@
+.homebanner {
+  position: relative; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  height: 100vh; 
+  background: url(../../Assets/HomeTruck.jpg) no-repeat center center / cover; 
+  text-align: center;
+  color: white; 
+  background-attachment: fixed;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+  z-index: 1;
+}
+
+.bannertext {
+  position: relative; 
+  z-index: 2; 
+  padding: 0 1rem; /* Added padding to ensure text isn't too close to edges on small screens */
+}
+
+.bannertext h1 {
+  font-size: 4rem;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  max-width: 70%;
+  margin: auto;
+}
+
+.bannertext p {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.bgcolor {
+    background: var(--bg-gray);
+}
+
+.rentalinfo {
+    text-align: center;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem;
+}
+
+.steps-heading h2{
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--dark-yellow);
+    letter-spacing: 2px;
+
+  }
+
+  .steps-heading h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    color: var( --dark-blue);
+    letter-spacing: 1px;
+  }
+
+  .steps-heading p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    max-width: 70%;
+    margin: auto;
+    margin-top: 0.5rem;
+    color: black;
+  }
+
+  .rentalcard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2rem !important;
+  }
+  
+  .step-card {
+    background-color: var(--dark-blue);
+    color: #ffffff;
+    padding: 1.5rem;
+    
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .step-card:hover {
+    transform: scale(1.05); /* Subtle scale on hover */
+}
+
+  
+.icon-container {
+  background-color: var(--dark-yellow);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+  
+  .icon {
+    color: var(--dark-blue);
+  }
+  
+  .step-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+  
+  .step-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .Quotebg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    text-align: center;
+    color: white;
+    background: url(../../Assets/GkOverlay.jpg) no-repeat center center / cover;
+}
+
+.overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-blue);
+  z-index: 1;
+}
+
+.Quote-data {
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+  margin: auto;
+}
+
+.Quote-data h1 {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 2rem; /* Default font size for larger screens */
+}
+
+.Quote-data p {
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.Quote-data a {
+  background: var(--dark-yellow);
+  color: var(--dark-blue);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  display: inline-block;
+ border: none;
+}
+
+
+@media (max-width: 1024px) {
+  .bannertext h1 {
+    font-size: 3rem;
+    max-width: 80%; /* Allow more space for text */
+  }
+
+  .bannertext p {
+    font-size: 0.9rem;
+    max-width: 70%; /* Increase width for better readability */
+  }
+
+  .steps-heading h2 {
+    font-size: 1.8rem;
+}
+
+.steps-heading h1 {
+    font-size: 2.2rem;
+}
+
+.steps-heading p {
+    font-size: 0.95rem;
+    max-width: 80%;
+}
+
+.step-card {
+    padding: 1.2rem;
+}
+
+.Quote-data h1 {
+  font-size: 1.8rem;
+}
+
+.Quote-data p {
+  font-size: 0.9rem;
+}
+
+.Quote-data a {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+}
+
+  @media only screen and (max-width: 768px) {
+    
+    .homebanner {
+      height: 80vh; /* Reduced height for smaller screens */
+      background-attachment: scroll; /* Disable fixed background on mobile */
+    }
+  
+    .bannertext h1 {
+      font-size: 2.5rem;
+      max-width: 100%; 
+    }
+  
+    .bannertext p {
+      font-size: 0.85rem;
+      max-width: 100%;
+    }
+
+    .steps-heading h2 {
+      font-size: 1.6rem;
+  }
+
+  .steps-heading h1 {
+      font-size: 1.8rem;
+  }
+
+  .steps-heading p {
+      font-size: 0.9rem;
+      max-width: 90%;
+  }
+
+  .step-number {
+      font-size: 1.6rem;
+  }
+
+  .step-title {
+      font-size: 0.9rem;
+  }
+
+  .Quotebg {
+    height: 50vh; /* Slightly increase height for smaller screens */
+}
+
+.Quote-data {
+    max-width: 90%;
+}
+
+.Quote-data h1 {
+    font-size: 1.5rem;
+}
+
+.Quote-data p {
+    font-size: 0.85rem;
+}
+
+.Quote-data a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+  }
+
+  @media (max-width: 480px) {
+    
+    .homebanner {
+      height: 25vh; /* Further reduced height for very small screens */
+    }
+  
+    .bannertext h1 {
+      font-size: 1.2rem;
+    }
+  
+    .bannertext p {
+      font-size: 0.60rem;
+      margin-top: 0.50rem;
+    }
+
+    .rentalinfo {
+     margin-top: 1rem;
+    }
+
+    .steps-heading h2 {
+      font-size: 1.4rem;
+
+  }
+
+  .steps-heading h1 {
+      font-size: 1.6rem;
+  }
+
+  .steps-heading p {
+      font-size: 0.85rem;
+      max-width: 95%;
+  }
+
+  .rentalcard {
+    padding: 0.20rem !important;
+  }
+
+  .step-number {
+      font-size: 1.4rem;
+  }
+
+  .step-title {
+      font-size: 0.85rem;
+  }
+
+  .Quotebg {
+    height: 30vh;
+}
+
+
+.Quote-data h1 {
+    font-size: 1.2rem;
+    padding: 0.25rem;
+}
+
+.Quote-data p {
+    font-size: 0.8rem;
+}
+
+.Quote-data a {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+  }
+  
+
+
+
+
