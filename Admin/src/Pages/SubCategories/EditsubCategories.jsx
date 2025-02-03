@@ -25,7 +25,7 @@ const EditSubCategory = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:4040/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
+          `http://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
         );
 
         const subCategoryData = response.data;
@@ -60,7 +60,7 @@ const EditSubCategory = () => {
     e.preventDefault();
 
     // Validate input fields
-    if ( !subCategory.CompanyName) {
+    if (!subCategory.CompanyName) {
       setError("All fields are required");
       return;
     }
@@ -80,7 +80,7 @@ const EditSubCategory = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:4040/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`,
+        `http://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`,
         formData
       );
 
@@ -132,7 +132,10 @@ const EditSubCategory = () => {
             className="form-control"
             value={subCategory.CompanyName}
             onChange={(e) =>
-              setSubCategory((prev) => ({ ...prev, CompanyName: e.target.value }))
+              setSubCategory((prev) => ({
+                ...prev,
+                CompanyName: e.target.value,
+              }))
             }
             required
           />

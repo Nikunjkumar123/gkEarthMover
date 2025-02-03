@@ -18,7 +18,7 @@ const Complete = () => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(
-          "http://localhost:4040/admin/v1/project/completed"
+          "http://api.dushadinfra.com/admin/v1/project/completed"
         );
         const data = await response.json();
         if (response.ok) {

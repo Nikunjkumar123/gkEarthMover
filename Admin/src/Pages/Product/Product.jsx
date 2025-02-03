@@ -10,7 +10,7 @@ const Product = () => {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4040/admin/v1/categories"
+        "http://api.dushadinfra.com/admin/v1/categories"
       );
       const products = response.data.categories.flatMap((category) =>
         category.subCategories.flatMap((subCategory) =>
@@ -39,13 +39,15 @@ const Product = () => {
   };
 
   const handleEdit = (categoryId, subCategoryId, productId) => {
-    navigate(`/edit-subcategoriesP/${categoryId}/${subCategoryId}/${productId}`);
+    navigate(
+      `/edit-subcategoriesP/${categoryId}/${subCategoryId}/${productId}`
+    );
   };
 
   const handleDelete = async (product) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        const deleteUrl = `http://localhost:4040/admin/v1/edit-update/prod/${product.categoryId}/${product.subCategoryId}/${product._id}`;
+        const deleteUrl = `http://api.dushadinfra.com/admin/v1/edit-update/prod/${product.categoryId}/${product.subCategoryId}/${product._id}`;
         await axios.delete(deleteUrl);
         alert("Product deleted successfully!");
         // Refresh the product list after deletion

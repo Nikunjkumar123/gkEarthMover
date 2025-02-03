@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const EditProduct = ({ categoryId, subCategoryId, productId }) => {
   const [formData, setFormData] = useState({
-    category: categoryId || '',
-    subCategory: subCategoryId || '',
-    companyName: '',
+    category: categoryId || "",
+    subCategory: subCategoryId || "",
+    companyName: "",
     image: null,
     isMostSelling: false,
-    description: '',
+    description: "",
   });
 
   const [categories, setCategories] = useState([]);
@@ -26,12 +26,14 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
         setIsLoading(true);
 
         // Fetch categories
-        const categoriesResponse = await axios.get('http://localhost:4040/admin/v1/categories');
+        const categoriesResponse = await axios.get(
+          "http://api.dushadinfra.com/admin/v1/categories"
+        );
         setCategories(categoriesResponse.data.categories || []);
 
         // Fetch product details
         const productResponse = await axios.get(
-          `http://localhost:4040/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`
+          `http://api.dushadinfra.com/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`
         );
         const product = productResponse.data;
 
@@ -39,16 +41,16 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
         setFormData({
           category: product.category || categoryId,
           subCategory: product.subCategory || subCategoryId,
-          companyName: product.companyName || '',
+          companyName: product.companyName || "",
           image: null,
           isMostSelling: product.isMostSelling || false,
-          description: product.description || '',
+          description: product.description || "",
         });
 
         // Fetch subcategories for the selected category
         if (product.category) {
           const subCategoriesResponse = await axios.get(
-            `http://localhost:4040/admin/v1/categories/${product.category}/subcategories`
+            `http://api.dushadinfra.com/admin/v1/categories/${product.category}/subcategories`
           );
           setSubCategories(subCategoriesResponse.data.subCategories || []);
         }
@@ -56,14 +58,14 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
         // Fetch products for the selected subcategory
         if (product.subCategory) {
           const productsResponse = await axios.get(
-            `http://localhost:4040/admin/v1/subcategories/${product.subCategory}/products`
+            `http://api.dushadinfra.com/admin/v1/subcategories/${product.subCategory}/products`
           );
           setProducts(productsResponse.data.products || []);
         }
 
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setIsLoading(false);
       }
     };
@@ -74,15 +76,20 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
   // Handle category change
   const handleCategoryChange = async (e) => {
     const selectedCategoryId = e.target.value;
-    setFormData({ ...formData, category: selectedCategoryId, subCategory: '', productName: '' });
+    setFormData({
+      ...formData,
+      category: selectedCategoryId,
+      subCategory: "",
+      productName: "",
+    });
 
     try {
       const response = await axios.get(
-        `http://localhost:4040/admin/v1/categories/${selectedCategoryId}/subcategories`
+        `http://api.dushadinfra.com/admin/v1/categories/${selectedCategoryId}/subcategories`
       );
       setSubCategories(response.data.subCategories || []);
     } catch (error) {
-      console.error('Error fetching subcategories:', error);
+      console.error("Error fetching subcategories:", error);
       setSubCategories([]);
     }
   };
@@ -90,15 +97,19 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
   // Handle subcategory change
   const handleSubCategoryChange = async (e) => {
     const selectedSubCategoryId = e.target.value;
-    setFormData({ ...formData, subCategory: selectedSubCategoryId, productName: '' });
+    setFormData({
+      ...formData,
+      subCategory: selectedSubCategoryId,
+      productName: "",
+    });
 
     try {
       const response = await axios.get(
-        `http://localhost:4040/admin/v1/subcategories/${selectedSubCategoryId}/products`
+        `http://api.dushadinfra.com/admin/v1/subcategories/${selectedSubCategoryId}/products`
       );
       setProducts(response.data.products || []);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error("Error fetching products:", error);
       setProducts([]);
     }
   };
@@ -108,7 +119,8 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
     const { name, value, type, checked, files } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value,
+      [name]:
+        type === "checkbox" ? checked : type === "file" ? files[0] : value,
     });
   };
 
@@ -122,16 +134,16 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
       });
 
       await axios.put(
-        `http://localhost:4040/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`,
+        `http://api.dushadinfra.com/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`,
         productData,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
 
-      alert('Product updated successfully!');
-      navigate('/products'); // Redirect to products list
+      alert("Product updated successfully!");
+      navigate("/products"); // Redirect to products list
     } catch (error) {
-      console.error('Error updating product:', error);
-      alert('Error updating product!');
+      console.error("Error updating product:", error);
+      alert("Error updating product!");
     }
   };
 
@@ -143,7 +155,9 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
       <form onSubmit={handleSubmit}>
         {/* Category Dropdown */}
         <div className="mb-3">
-          <label htmlFor="category" className="form-label">Categories</label>
+          <label htmlFor="category" className="form-label">
+            Categories
+          </label>
           <select
             id="category"
             name="category"
@@ -153,14 +167,18 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
           >
             <option value="">Select Category</option>
             {categories.map((category) => (
-              <option key={category._id} value={category._id}>{category.category}</option>
+              <option key={category._id} value={category._id}>
+                {category.category}
+              </option>
             ))}
           </select>
         </div>
 
         {/* Subcategory Dropdown */}
         <div className="mb-3">
-          <label htmlFor="subCategory" className="form-label">Subcategories</label>
+          <label htmlFor="subCategory" className="form-label">
+            Subcategories
+          </label>
           <select
             id="subCategory"
             name="subCategory"
@@ -171,7 +189,9 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
           >
             <option value="">Select Subcategory</option>
             {subCategories.map((subCategory) => (
-              <option key={subCategory._id} value={subCategory._id}>{subCategory.subCategory}</option>
+              <option key={subCategory._id} value={subCategory._id}>
+                {subCategory.subCategory}
+              </option>
             ))}
           </select>
         </div>
@@ -179,7 +199,9 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
         {/* Form Fields */}
         {/* Add productName, machineName, companyName, image, isMostSelling, description */}
         {/* Submit Button */}
-        <button type="submit" className="btn btn-primary">Update Product</button>
+        <button type="submit" className="btn btn-primary">
+          Update Product
+        </button>
       </form>
     </div>
   );

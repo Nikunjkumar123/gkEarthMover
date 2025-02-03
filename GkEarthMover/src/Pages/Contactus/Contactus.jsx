@@ -23,13 +23,16 @@ const Contactus = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:4040/admin/v1/user/contact-us", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "http://api.dushadinfra.com/admin/v1/user/contact-us",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       const res = await response.json();
 

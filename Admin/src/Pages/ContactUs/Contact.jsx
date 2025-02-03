@@ -10,7 +10,9 @@ const Contact = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await axios.get("http://localhost:4040/admin/v1/user/contact-us");
+        const response = await axios.get(
+          "http://api.dushadinfra.com/admin/v1/user/contact-us"
+        );
         setContacts(response.data.contacts); // Assuming the API returns an array of contacts
         setLoading(false);
       } catch (err) {
@@ -30,11 +32,16 @@ const Contact = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this contact?")) {
       try {
-        await axios.delete(`http://localhost:4040/admin/v1/user/up-ed/contact/${id}`);
+        await axios.delete(
+          `http://api.dushadinfra.com/admin/v1/user/up-ed/contact/${id}`
+        );
         setContacts(contacts.filter((contact) => contact._id !== id));
         // console.log(`Deleted contact with ID: ${id}`);
       } catch (err) {
-        console.error("Failed to delete contact:", err.response?.data?.msg || err.message);
+        console.error(
+          "Failed to delete contact:",
+          err.response?.data?.msg || err.message
+        );
       }
     }
   };

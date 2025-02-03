@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
-    category: '',
-    subCategory: '',
-    companyName: '',
+    category: "",
+    subCategory: "",
+    companyName: "",
     image: null,
     isMostSelling: false,
-    description: '',
+    description: "",
   });
 
   const [categories, setCategories] = useState([]);
@@ -18,15 +18,17 @@ const AddProduct = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:4040/admin/v1/categories');
+        const response = await axios.get(
+          "http://api.dushadinfra.com/admin/v1/categories"
+        );
         if (response.data && Array.isArray(response.data.categories)) {
           setCategories(response.data.categories); // Populate categories
         } else {
-          console.error('Invalid categories response:', response.data);
+          console.error("Invalid categories response:", response.data);
           setCategories([]);
         }
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
         setCategories([]);
       }
     };
@@ -38,17 +40,17 @@ const AddProduct = () => {
   const fetchSubCategories = async (categoryId) => {
     try {
       const response = await axios.get(
-        `http://localhost:4040/admin/v1/categories/${categoryId}/subcategories`
+        `http://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories`
       );
 
       if (response.data && Array.isArray(response.data.subCategories)) {
         setSubCategories(response.data.subCategories); // Populate subcategories
       } else {
-        console.error('Invalid subcategories response:', response.data);
+        console.error("Invalid subcategories response:", response.data);
         setSubCategories([]);
       }
     } catch (error) {
-      console.error('Error fetching subcategories:', error);
+      console.error("Error fetching subcategories:", error);
       setSubCategories([]);
     }
   };
@@ -56,7 +58,7 @@ const AddProduct = () => {
   // Handle category change to fetch subcategories
   const handleCategoryChange = (e) => {
     const categoryId = e.target.value;
-    setFormData({ ...formData, category: categoryId, subCategory: '' });
+    setFormData({ ...formData, category: categoryId, subCategory: "" });
     fetchSubCategories(categoryId); // Fetch subcategories when category changes
   };
 
@@ -65,7 +67,8 @@ const AddProduct = () => {
     const { name, value, type, checked, files } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value,
+      [name]:
+        type === "checkbox" ? checked : type === "file" ? files[0] : value,
     });
   };
 
@@ -74,38 +77,38 @@ const AddProduct = () => {
     e.preventDefault();
     try {
       const productData = new FormData();
-      productData.append('Category', formData.category);
-      productData.append('subCategory', formData.subCategory);
-      productData.append('CompanyName', formData.companyName);
-      productData.append('MachineName', formData.machineName);
-      productData.append('image', formData.image);
-      productData.append('isMostSelling', formData.isMostSelling);
-      productData.append('description', formData.description);
+      productData.append("Category", formData.category);
+      productData.append("subCategory", formData.subCategory);
+      productData.append("CompanyName", formData.companyName);
+      productData.append("MachineName", formData.machineName);
+      productData.append("image", formData.image);
+      productData.append("isMostSelling", formData.isMostSelling);
+      productData.append("description", formData.description);
 
       // Sending POST request to the backend
       await axios.post(
-        `http://localhost:4040/admin/v1/categories/${formData.category}/subcategories/${formData.subCategory}/products`,
+        `http://api.dushadinfra.com/admin/v1/categories/${formData.category}/subcategories/${formData.subCategory}/products`,
         productData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         }
       );
 
-      alert('Product added successfully!');
+      alert("Product added successfully!");
       // Reset form after submission
       setFormData({
-        category: '',
-        subCategory: '',
-        companyName: '',
-        machineName: '',
+        category: "",
+        subCategory: "",
+        companyName: "",
+        machineName: "",
         image: null,
         isMostSelling: false,
       });
     } catch (error) {
-      console.error('Error adding product:', error);
-      alert('Error adding product!');
+      console.error("Error adding product:", error);
+      alert("Error adding product!");
     }
   };
 
@@ -115,7 +118,9 @@ const AddProduct = () => {
       <form onSubmit={handleSubmit}>
         {/* Category Dropdown */}
         <div className="mb-3">
-          <label htmlFor="category" className="form-label">Categories</label>
+          <label htmlFor="category" className="form-label">
+            Categories
+          </label>
           <select
             id="category"
             name="category"
@@ -125,14 +130,18 @@ const AddProduct = () => {
           >
             <option value="">Select Category</option>
             {categories.map((category) => (
-              <option key={category._id} value={category._id}>{category.category}</option>
+              <option key={category._id} value={category._id}>
+                {category.category}
+              </option>
             ))}
           </select>
         </div>
 
         {/* Subcategory Dropdown */}
         <div className="mb-3">
-          <label htmlFor="subCategory" className="form-label">Subcategories</label>
+          <label htmlFor="subCategory" className="form-label">
+            Subcategories
+          </label>
           <select
             id="subCategory"
             name="subCategory"
@@ -158,7 +167,9 @@ const AddProduct = () => {
 
         {/* Other Fields */}
         <div className="mb-3">
-          <label htmlFor="machineName" className="form-label">Machine Name</label>
+          <label htmlFor="machineName" className="form-label">
+            Machine Name
+          </label>
           <input
             type="text"
             id="machineName"
@@ -171,7 +182,9 @@ const AddProduct = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="companyName" className="form-label">Company Name</label>
+          <label htmlFor="companyName" className="form-label">
+            Company Name
+          </label>
           <input
             type="text"
             id="companyName"
@@ -184,7 +197,9 @@ const AddProduct = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="image" className="form-label">Image</label>
+          <label htmlFor="image" className="form-label">
+            Image
+          </label>
           <input
             type="file"
             id="image"
@@ -204,7 +219,9 @@ const AddProduct = () => {
             checked={formData.isMostSelling}
             onChange={handleChange}
           />
-          <label htmlFor="isMostSelling" className="form-check-label">Most Selling Products</label>
+          <label htmlFor="isMostSelling" className="form-check-label">
+            Most Selling Products
+          </label>
         </div>
 
         {/* <div className="mb-3">
@@ -221,7 +238,9 @@ const AddProduct = () => {
         </div> */}
 
         {/* Submit Button */}
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
     </div>
   );

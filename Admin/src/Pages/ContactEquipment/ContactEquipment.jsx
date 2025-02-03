@@ -9,7 +9,9 @@ const ContactEquipment = () => {
   useEffect(() => {
     const fetchEquipmentDetails = async () => {
       try {
-        const response = await axios.get('http://localhost:4040/admin/v1/user/contact');
+        const response = await axios.get(
+          "http://api.dushadinfra.com/admin/v1/user/contact"
+        );
         // Update state with fetched data
         setEquipmentDetails(response.data.all || []);
       } catch (error) {
@@ -27,10 +29,14 @@ const ContactEquipment = () => {
 
   // Handle Delete functionality
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this equipment entry?")) {
+    if (
+      window.confirm("Are you sure you want to delete this equipment entry?")
+    ) {
       try {
         // Call the API to delete the equipment using DELETE method
-        const response = await axios.delete(`http://localhost:4040/admin/v1/enquiry/up-ed/${id}`);
+        const response = await axios.delete(
+          `http://api.dushadinfra.com/admin/v1/enquiry/up-ed/${id}`
+        );
 
         // Check if the deletion was successful
         if (response.status === 200) {
@@ -93,7 +99,7 @@ const ContactEquipment = () => {
                       className="btn btn-danger btn-sm"
                       onClick={() => {
                         // console.log(equipment)
-                        handleDelete(equipment._id)
+                        handleDelete(equipment._id);
                       }}
                     >
                       <i className="bi bi-trash3"></i> Delete
@@ -103,7 +109,9 @@ const ContactEquipment = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="text-center">No equipment details available</td>
+                <td colSpan="8" className="text-center">
+                  No equipment details available
+                </td>
               </tr>
             )}
           </tbody>

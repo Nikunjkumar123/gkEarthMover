@@ -15,7 +15,7 @@ const SubEquipment = () => {
     const fetchEquipmentData = async () => {
       try {
         const response = await fetch(
-          `https://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories/${subCategoryId}/products`
+          `http://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories/${subCategoryId}/products`
         );
         const data = await response.json();
 
@@ -62,13 +62,13 @@ const SubEquipment = () => {
       equipmentName: selectedEquipment.MachineName, // Directly include equipmentName
       company: selectedEquipment.CompanyName, // Directly include company
     };
-  
+
     try {
       // Log the combined data for debugging
       // console.log("Form Data:", combinedData);
-  
+
       const response = await fetch(
-        `http://localhost:4040/admin/v1/user/contact`, 
+        `http://api.dushadinfra.com/admin/v1/user/contact`,
         {
           method: "POST",
           headers: {
@@ -78,18 +78,18 @@ const SubEquipment = () => {
           body: JSON.stringify(combinedData),
         }
       );
-  
+
       // Check if response is ok (status 200-299)
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
+
       const res = await response.json(); // Parse the response JSON
-  
+
       // Log the response to check its structure
       // console.log("Server Response:", res.msg);
-  
-      if (res.msg == 'Equipment details added successfully') {
+
+      if (res.msg == "Equipment details added successfully") {
         Swal.fire({
           title: "Good job!",
           text: "Inquiry sent successfully!",
@@ -115,7 +115,7 @@ const SubEquipment = () => {
       });
     }
   };
-  
+
   return (
     <>
       <div className="container RentalEquipment">

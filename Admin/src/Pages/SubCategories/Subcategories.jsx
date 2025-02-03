@@ -11,7 +11,9 @@ const Subcategories = () => {
   // Fetch categories and subcategories from the API
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:4040/admin/v1/categories");
+      const response = await axios.get(
+        "http://api.dushadinfra.com/admin/v1/categories"
+      );
       setCategories(response.data.categories);
     } catch (err) {
       setError(`Error fetching categories: ${err.message}`);
@@ -30,7 +32,7 @@ const Subcategories = () => {
     if (window.confirm("Are you sure you want to delete this subcategory?")) {
       try {
         const response = await axios.delete(
-          `http://localhost:4040/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
+          `http://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
         );
         if (response.status === 200) {
           // Update the local state to remove the deleted subcategory
@@ -78,8 +80,10 @@ const Subcategories = () => {
                   <tr key={subCategory._id}>
                     <td>{counter++}</td> {/* Continuous counter */}
                     <td>{category.category}</td> {/* Display Category Name */}
-                    <td>{subCategory.Category}</td> {/* Display Sub Category Name */}
-                    <td>{subCategory.CompanyName}</td> {/* Display Company Name */}
+                    <td>{subCategory.Category}</td>{" "}
+                    {/* Display Sub Category Name */}
+                    <td>{subCategory.CompanyName}</td>{" "}
+                    {/* Display Company Name */}
                     <td>
                       <img
                         src={subCategory.Image}
@@ -96,13 +100,17 @@ const Subcategories = () => {
                       <div className="d-flex align-items-center">
                         <button
                           className="btn btn-sm btn-primary me-2"
-                          onClick={() => handleEdit(category._id, subCategory._id)}
+                          onClick={() =>
+                            handleEdit(category._id, subCategory._id)
+                          }
                         >
                           <i className="bi bi-pencil-square"></i> Edit
                         </button>
                         <button
                           className="btn btn-sm btn-danger"
-                          onClick={() => handleDelete(category._id, subCategory._id)}
+                          onClick={() =>
+                            handleDelete(category._id, subCategory._id)
+                          }
                         >
                           <i className="bi bi-trash"></i> Delete
                         </button>

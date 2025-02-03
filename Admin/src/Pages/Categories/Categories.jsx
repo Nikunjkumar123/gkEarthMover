@@ -5,12 +5,14 @@ import axios from "axios";
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState("");
-  
+
   const navigate = useNavigate(); // Initialize useNavigate
 
   const gettingCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:4040/admin/v1/categories");
+      const response = await axios.get(
+        "http://api.dushadinfra.com/admin/v1/categories"
+      );
       setCategories(response.data.categories);
       // console.log(response.data.categories);
     } catch (error) {
@@ -29,7 +31,9 @@ const Categories = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
       try {
-        const response = await axios.delete(`http://localhost:4040/admin/v1/edit-update/cat/${id}`);
+        const response = await axios.delete(
+          `http://api.dushadinfra.com/admin/v1/edit-update/cat/${id}`
+        );
         if (response.status === 200) {
           setCategories(categories.filter((category) => category._id !== id));
         }

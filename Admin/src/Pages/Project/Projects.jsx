@@ -12,7 +12,7 @@ const Projects = () => {
   const fetchProjects = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4040/admin/v1/projects/all"
+        "http://api.dushadinfra.com/admin/v1/projects/all"
       );
       if (response.data && response.data.msg) {
         setProjects(response.data.msg);
@@ -38,7 +38,7 @@ const Projects = () => {
     if (window.confirm("Are you sure you want to delete this project?")) {
       try {
         const response = await axios.delete(
-          `http://localhost:4040/admin/v1/projects/all/${projectId}`
+          `http://api.dushadinfra.com/admin/v1/projects/all/${projectId}`
         );
         if (response.status === 200) {
           // Update the projects state

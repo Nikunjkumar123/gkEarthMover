@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const AddProject = () => {
   const [project, setProject] = useState({
     description: "",
-    image: null,  // Store image as a file object
+    image: null, // Store image as a file object
     status: "upcoming",
   });
   const [error, setError] = useState("");
@@ -23,11 +23,11 @@ const AddProject = () => {
 
   // Handle image change
   const handleImageChange = (e) => {
-    const file = e.target.files[0];  // Get the first file
+    const file = e.target.files[0]; // Get the first file
     if (file) {
       setProject({
         ...project,
-        image: file,  // Set the image file to the state
+        image: file, // Set the image file to the state
       });
     }
   };
@@ -49,11 +49,11 @@ const AddProject = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4040/admin/v1/projects/all",
+        "http://api.dushadinfra.com/admin/v1/projects/all",
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",  // Important for file upload
+            "Content-Type": "multipart/form-data", // Important for file upload
           },
         }
       );
@@ -101,7 +101,7 @@ const AddProject = () => {
             type="file"
             className="form-control"
             name="image"
-            accept="image/*"  // Restrict file types to images only
+            accept="image/*" // Restrict file types to images only
             onChange={handleImageChange}
             required
           />

@@ -5,7 +5,7 @@ import axios from "axios";
 const EditCategory = () => {
   const { id } = useParams(); // Get the category ID from the URL
   const navigate = useNavigate();
-  
+
   const [categoryName, setCategoryName] = useState("");
   // const [image, setImage] = useState(null);
   const [error, setError] = useState("");
@@ -14,7 +14,9 @@ const EditCategory = () => {
   // Fetch the category data by ID
   const getCategory = async () => {
     try {
-      const response = await axios.get(`http://localhost:4040/admin/v1/categories/single/${id}`);
+      const response = await axios.get(
+        `http://api.dushadinfra.com/admin/v1/categories/single/${id}`
+      );
       setCategoryName(response.data.data.category);
       // setImage(response.data.data.image);
       // console.log(response.data.data.image)
@@ -40,7 +42,7 @@ const EditCategory = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:4040/admin/v1/edit-update/cat/${id}`,
+        `http://api.dushadinfra.com/admin/v1/edit-update/cat/${id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -61,7 +63,9 @@ const EditCategory = () => {
       {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="categoryName" className="form-label">Category Name</label>
+          <label htmlFor="categoryName" className="form-label">
+            Category Name
+          </label>
           <input
             type="text"
             id="categoryName"

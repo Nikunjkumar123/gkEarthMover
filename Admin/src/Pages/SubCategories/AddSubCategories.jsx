@@ -15,7 +15,9 @@ const AddSubCategories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:4040/admin/v1/categories");
+        const response = await axios.get(
+          "http://api.dushadinfra.com/admin/v1/categories"
+        );
         setCategories(response.data.categories); // Assuming your API returns categories
       } catch (err) {
         setError("Error fetching categories");
@@ -43,13 +45,13 @@ const AddSubCategories = () => {
 
     const formData = new FormData();
     formData.append("Category", subCategoryName);
-    formData.append("CompanyName", companyName); 
-    formData.append("image", image); 
+    formData.append("CompanyName", companyName);
+    formData.append("image", image);
 
     try {
       // Send POST request to add subcategory under selected category
       await axios.post(
-        `http://localhost:4040/admin/v1/categories/${selectedCategory}/subcategories`,
+        `http://api.dushadinfra.com/admin/v1/categories/${selectedCategory}/subcategories`,
         formData
       );
 
@@ -57,7 +59,7 @@ const AddSubCategories = () => {
       alert("Subcategory added successfully!");
       // Clear form
       setSubCategoryName("");
-      setCompanyName("");  // Reset company name state
+      setCompanyName(""); // Reset company name state
       setImage(null);
       setImagePreview("");
     } catch (err) {
@@ -86,9 +88,7 @@ const AddSubCategories = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 required
               >
-                <option value="">
-                  -- Select a Category --
-                </option>
+                <option value="">-- Select a Category --</option>
                 {categories.map((category) => (
                   <option key={category._id} value={category._id}>
                     {category.category}
@@ -166,7 +166,11 @@ const AddSubCategories = () => {
             {error && <div className="alert alert-danger">{error}</div>}
 
             {/* Submit Button */}
-            <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              disabled={loading}
+            >
               {loading ? "Adding..." : "Add Subcategory"}
             </button>
           </form>

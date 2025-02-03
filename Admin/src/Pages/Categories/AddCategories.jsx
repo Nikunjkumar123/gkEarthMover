@@ -21,7 +21,7 @@ const AddCategory = () => {
 
     try {
       // Sending form data via a POST request
-      const response = await axios.post("http://localhost:4040/admin/v1/categories", formData, {
+      const response = await axios.post("http://api.dushadinfra.com/admin/v1/categories", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
