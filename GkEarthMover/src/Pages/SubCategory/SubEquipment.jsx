@@ -15,7 +15,7 @@ const SubEquipment = () => {
     const fetchEquipmentData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4040/admin/v1/categories/${categoryId}/subcategories/${subCategoryId}/products`
+          `https://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories/${subCategoryId}/products`
         );
         const data = await response.json();
 
