@@ -49,7 +49,7 @@ const AddProject = () => {
 
     try {
       const response = await axios.post(
-        "http://api.dushadinfra.com/admin/v1/projects/all",
+        "https://api.dushadinfra.com/admin/v1/projects/all",
         formData,
         {
           headers: {

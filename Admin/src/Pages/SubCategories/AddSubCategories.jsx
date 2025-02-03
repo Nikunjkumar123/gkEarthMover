@@ -16,7 +16,7 @@ const AddSubCategories = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://api.dushadinfra.com/admin/v1/categories"
+          "https://api.dushadinfra.com/admin/v1/categories"
         );
         setCategories(response.data.categories); // Assuming your API returns categories
       } catch (err) {
@@ -51,7 +51,7 @@ const AddSubCategories = () => {
     try {
       // Send POST request to add subcategory under selected category
       await axios.post(
-        `http://api.dushadinfra.com/admin/v1/categories/${selectedCategory}/subcategories`,
+        `https://api.dushadinfra.com/admin/v1/categories/${selectedCategory}/subcategories`,
         formData
       );
 

@@ -12,7 +12,7 @@ const Subcategories = () => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://api.dushadinfra.com/admin/v1/categories"
+        "https://api.dushadinfra.com/admin/v1/categories"
       );
       setCategories(response.data.categories);
     } catch (err) {
@@ -32,7 +32,7 @@ const Subcategories = () => {
     if (window.confirm("Are you sure you want to delete this subcategory?")) {
       try {
         const response = await axios.delete(
-          `http://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
+          `https://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
         );
         if (response.status === 200) {
           // Update the local state to remove the deleted subcategory

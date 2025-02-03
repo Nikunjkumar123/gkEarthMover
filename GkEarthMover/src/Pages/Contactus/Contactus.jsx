@@ -24,7 +24,7 @@ const Contactus = () => {
   const onSubmit = async (data) => {
     try {
       const response = await fetch(
-        "http://api.dushadinfra.com/admin/v1/user/contact-us",
+        "https://api.dushadinfra.com/admin/v1/user/contact-us",
         {
           method: "POST",
           headers: {

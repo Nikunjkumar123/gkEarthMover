@@ -13,7 +13,7 @@ const Equipment = () => {
   const getingCategory = async () => {
     try {
       const response = await axios.get(
-        "http://api.dushadinfra.com/admin/v1/categories"
+        "https://api.dushadinfra.com/admin/v1/categories"
       );
       setCategories(response.data.categories);
       // Initially show subCategories for the default category (first one in the list)

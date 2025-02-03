@@ -19,7 +19,7 @@ const AddProduct = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://api.dushadinfra.com/admin/v1/categories"
+          "https://api.dushadinfra.com/admin/v1/categories"
         );
         if (response.data && Array.isArray(response.data.categories)) {
           setCategories(response.data.categories); // Populate categories
@@ -40,7 +40,7 @@ const AddProduct = () => {
   const fetchSubCategories = async (categoryId) => {
     try {
       const response = await axios.get(
-        `http://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories`
+        `https://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories`
       );
 
       if (response.data && Array.isArray(response.data.subCategories)) {
@@ -87,7 +87,7 @@ const AddProduct = () => {
 
       // Sending POST request to the backend
       await axios.post(
-        `http://api.dushadinfra.com/admin/v1/categories/${formData.category}/subcategories/${formData.subCategory}/products`,
+        `https://api.dushadinfra.com/admin/v1/categories/${formData.category}/subcategories/${formData.subCategory}/products`,
         productData,
         {
           headers: {

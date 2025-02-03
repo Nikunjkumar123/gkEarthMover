@@ -25,7 +25,7 @@ const EditSubCategory = () => {
 
       try {
         const response = await axios.get(
-          `http://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
+          `https://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`
         );
 
         const subCategoryData = response.data;
@@ -80,7 +80,7 @@ const EditSubCategory = () => {
 
     try {
       const response = await axios.patch(
-        `http://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`,
+        `https://api.dushadinfra.com/admin/v1/categories/edit-update/${categoryId}/${subCategoryId}`,
         formData
       );
 

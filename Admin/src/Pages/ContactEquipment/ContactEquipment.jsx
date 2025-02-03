@@ -10,7 +10,7 @@ const ContactEquipment = () => {
     const fetchEquipmentDetails = async () => {
       try {
         const response = await axios.get(
-          "http://api.dushadinfra.com/admin/v1/user/contact"
+          "https://api.dushadinfra.com/admin/v1/user/contact"
         );
         // Update state with fetched data
         setEquipmentDetails(response.data.all || []);
@@ -35,7 +35,7 @@ const ContactEquipment = () => {
       try {
         // Call the API to delete the equipment using DELETE method
         const response = await axios.delete(
-          `http://api.dushadinfra.com/admin/v1/enquiry/up-ed/${id}`
+          `https://api.dushadinfra.com/admin/v1/enquiry/up-ed/${id}`
         );
 
         // Check if the deletion was successful

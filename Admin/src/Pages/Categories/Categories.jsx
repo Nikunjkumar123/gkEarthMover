@@ -11,7 +11,7 @@ const Categories = () => {
   const gettingCategories = async () => {
     try {
       const response = await axios.get(
-        "http://api.dushadinfra.com/admin/v1/categories"
+        "https://api.dushadinfra.com/admin/v1/categories"
       );
       setCategories(response.data.categories);
       // console.log(response.data.categories);
@@ -32,7 +32,7 @@ const Categories = () => {
     if (window.confirm("Are you sure you want to delete this category?")) {
       try {
         const response = await axios.delete(
-          `http://api.dushadinfra.com/admin/v1/edit-update/cat/${id}`
+          `https://api.dushadinfra.com/admin/v1/edit-update/cat/${id}`
         );
         if (response.status === 200) {
           setCategories(categories.filter((category) => category._id !== id));

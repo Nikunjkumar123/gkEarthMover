@@ -15,7 +15,7 @@ const EditCategory = () => {
   const getCategory = async () => {
     try {
       const response = await axios.get(
-        `http://api.dushadinfra.com/admin/v1/categories/single/${id}`
+        `https://api.dushadinfra.com/admin/v1/categories/single/${id}`
       );
       setCategoryName(response.data.data.category);
       // setImage(response.data.data.image);
@@ -42,7 +42,7 @@ const EditCategory = () => {
 
     try {
       const response = await axios.patch(
-        `http://api.dushadinfra.com/admin/v1/edit-update/cat/${id}`,
+        `https://api.dushadinfra.com/admin/v1/edit-update/cat/${id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

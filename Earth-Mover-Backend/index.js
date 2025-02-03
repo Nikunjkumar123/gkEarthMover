@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(fileUpload({useTempFiles:true}));
 app.use(cors({
-    origin:['https://www.dushadinfra.com','https://wwww.admin.dushadinfra.com'],
+    origin:['https://www.dushadinfra.com','https://admin.dushadinfra.com'],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
 }))

@@ -21,11 +21,15 @@ const AddCategory = () => {
 
     try {
       // Sending form data via a POST request
-      const response = await axios.post("http://api.dushadinfra.com/admin/v1/categories", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "https://api.dushadinfra.com/admin/v1/categories",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setCategory(""); // Clear category name input
       setError(""); // Clear any error messages

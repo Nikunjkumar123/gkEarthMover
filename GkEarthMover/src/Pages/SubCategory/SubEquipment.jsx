@@ -15,7 +15,7 @@ const SubEquipment = () => {
     const fetchEquipmentData = async () => {
       try {
         const response = await fetch(
-          `http://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories/${subCategoryId}/products`
+          `https://api.dushadinfra.com/admin/v1/categories/${categoryId}/subcategories/${subCategoryId}/products`
         );
         const data = await response.json();
 
@@ -68,7 +68,7 @@ const SubEquipment = () => {
       // console.log("Form Data:", combinedData);
 
       const response = await fetch(
-        `http://api.dushadinfra.com/admin/v1/user/contact`,
+        `https://api.dushadinfra.com/admin/v1/user/contact`,
         {
           method: "POST",
           headers: {

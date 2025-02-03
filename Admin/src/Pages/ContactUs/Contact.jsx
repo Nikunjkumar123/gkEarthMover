@@ -11,7 +11,7 @@ const Contact = () => {
     const fetchContacts = async () => {
       try {
         const response = await axios.get(
-          "http://api.dushadinfra.com/admin/v1/user/contact-us"
+          "https://api.dushadinfra.com/admin/v1/user/contact-us"
         );
         setContacts(response.data.contacts); // Assuming the API returns an array of contacts
         setLoading(false);
@@ -33,7 +33,7 @@ const Contact = () => {
     if (window.confirm("Are you sure you want to delete this contact?")) {
       try {
         await axios.delete(
-          `http://api.dushadinfra.com/admin/v1/user/up-ed/contact/${id}`
+          `https://api.dushadinfra.com/admin/v1/user/up-ed/contact/${id}`
         );
         setContacts(contacts.filter((contact) => contact._id !== id));
         // console.log(`Deleted contact with ID: ${id}`);

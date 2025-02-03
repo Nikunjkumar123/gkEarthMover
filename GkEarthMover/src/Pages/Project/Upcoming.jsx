@@ -18,7 +18,7 @@ const Upcoming = () => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(
-          "http://api.dushadinfra.com/admin/v1/project/upcoming"
+          "https://api.dushadinfra.com/admin/v1/project/upcoming"
         );
         const data = await response.json();
         if (response.ok) {

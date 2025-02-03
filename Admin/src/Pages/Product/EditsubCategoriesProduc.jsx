@@ -27,13 +27,13 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
 
         // Fetch categories
         const categoriesResponse = await axios.get(
-          "http://api.dushadinfra.com/admin/v1/categories"
+          "https://api.dushadinfra.com/admin/v1/categories"
         );
         setCategories(categoriesResponse.data.categories || []);
 
         // Fetch product details
         const productResponse = await axios.get(
-          `http://api.dushadinfra.com/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`
+          `https://api.dushadinfra.com/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`
         );
         const product = productResponse.data;
 
@@ -50,7 +50,7 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
         // Fetch subcategories for the selected category
         if (product.category) {
           const subCategoriesResponse = await axios.get(
-            `http://api.dushadinfra.com/admin/v1/categories/${product.category}/subcategories`
+            `https://api.dushadinfra.com/admin/v1/categories/${product.category}/subcategories`
           );
           setSubCategories(subCategoriesResponse.data.subCategories || []);
         }
@@ -58,7 +58,7 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
         // Fetch products for the selected subcategory
         if (product.subCategory) {
           const productsResponse = await axios.get(
-            `http://api.dushadinfra.com/admin/v1/subcategories/${product.subCategory}/products`
+            `https://api.dushadinfra.com/admin/v1/subcategories/${product.subCategory}/products`
           );
           setProducts(productsResponse.data.products || []);
         }
@@ -85,7 +85,7 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
 
     try {
       const response = await axios.get(
-        `http://api.dushadinfra.com/admin/v1/categories/${selectedCategoryId}/subcategories`
+        `https://api.dushadinfra.com/admin/v1/categories/${selectedCategoryId}/subcategories`
       );
       setSubCategories(response.data.subCategories || []);
     } catch (error) {
@@ -105,7 +105,7 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
 
     try {
       const response = await axios.get(
-        `http://api.dushadinfra.com/admin/v1/subcategories/${selectedSubCategoryId}/products`
+        `https://api.dushadinfra.com/admin/v1/subcategories/${selectedSubCategoryId}/products`
       );
       setProducts(response.data.products || []);
     } catch (error) {
@@ -134,7 +134,7 @@ const EditProduct = ({ categoryId, subCategoryId, productId }) => {
       });
 
       await axios.put(
-        `http://api.dushadinfra.com/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`,
+        `https://api.dushadinfra.com/admin/v1/edit-update/prod/${categoryId}/${subCategoryId}/${productId}`,
         productData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
